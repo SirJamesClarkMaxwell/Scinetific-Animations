@@ -1,2 +1,10 @@
-*pycache*
+**pycache**
 videos
+*.log*
+*.pdf
+*.gz
+*.fls
+*.fdb_latexmk
+*.aux
+*.out
+*.toc

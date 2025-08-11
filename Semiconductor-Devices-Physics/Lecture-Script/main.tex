@@ -1,0 +1,120 @@
+\documentclass[14pt,a4paper]{report}
+\usepackage{tabularx}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\usepackage[MeX]{polski}
+%\usepackage{wrapfig}    %do rysunków otoczonych tekstem
+\usepackage{subfigure}
+\usepackage[most]{tcolorbox}
+%do kolorowych referencji do rysunków, cytowań:
+\usepackage{multicol}
+\usepackage{colortbl}
+\usepackage[colorlinks=true,linkcolor=firebrick,citecolor=green]{hyperref}
+\usepackage{gensymb}
+\usepackage{caption}
+\usepackage{wrapfig}
+\usepackage{subcaption}
+\usepackage{subfigure}
+\usepackage{gensymb}
+%do zdefiniowana własnych kolorów:
+\definecolor{darkred}{rgb}{0.5,0,0}
+\definecolor{darkblue}{rgb}{0,0,0.5}
+\definecolor{firebrick}{rgb}{0.75,0.125,0.125}
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+\usepackage[utf8]{inputenc}
+\usepackage{polski}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage[a4paper,top=2cm,bottom=2cm,left=2.5cm,right=2.5cm]{geometry}
+% \makeatletter
+% \renewcommand\labelitemi{\textcolor{white}{\normalfont\bfseries\textbullet}}
+% \makeatother
+
+
+\bibliographystyle{abbrv}
+\makeatletter
+\newcommand{\linia}{\rule{\linewidth}{0.4mm}}
+\renewcommand{\maketitle}{\begin{titlepage}
+    \vspace*{1cm}
+    \begin{center}\small
+        Politechnika Warszawska\\
+        Wydział Fizyki\\
+    \end{center}
+    \vspace{3cm}
+    \noindent\linia
+    \begin{center}
+        \LARGE \textsc{\@title}
+    \end{center}
+    \linia
+    \vspace{0.5cm}
+    \begin{flushright}
+        \begin{minipage}{10cm}
+            \textit{\small Autorzy:}\\
+            \normalsize \textsc{\@author} \par
+        \end{minipage}
+        
+        
+        \vspace*{\stretch{15}}
+        \begin{center}
+            \date{30.10.2024}
+        \end{center}
+    \end{flushright}
+\end{titlepage}%
+}
+\makeatother
+\author{dr hab. inż Paweł Zabierowski prof. uczelni\\
+spisał: Franciszek Zabierowski }
+
+% \pagecolor{black}
+% \color{white}
+
+\title{Podstawy fizyki przyrządów półprzewodnikowych}
+
+\renewcommand{\chaptername}{Wykład}
+
+
+
+\begin{document}
+\maketitle
+
+
+\chapter*{Wstęp}
+\addcontentsline{toc}{chapter}{Wstęp}
+Niniejszy skrypt powstał w celu pomocy w nauce fizyki przyżądów półprzewodnikowych
+jako dopełnienie do wykładu profesora Pawła Zabierowskiego. Autorzy skryptu zakładają podstawową 
+wiedzę z fizyki ciała stałego oraz fizyki półprzewodników. Niniejszy skrypt jest przeznaczony dla studentów 
+studiów magisterskich na Wydziale Fizyki Politechniki Wartszawskiej. Materiał zawarty w skrypcie wykracza 
+po za wiadomości przedstawione na wykładzie. Dodatkowo zawiera on też instrukcje do realizacji laboratorium, 
+które jest przewidziane w ramach realizacji przedmiotu, owe instrukcje mogą być też potraktowane jako samouczek do 
+prowadzenia symulacji w oprogramowaniu \hyperlink{https://scaps.elis.ugent.be}{SCAPS}. Ponadto chcielibyśmy zwrócić 
+waszą uwagę na sekcje poświęcone charakteryzowaniu urządzeń i mierniczej części tego skryptu. Niekóre wyrażenia i definicje zostaną 
+umieszczone w ramkach, oznacza to że znajomość ich wyprowadzeń i rozumowania za nimi stojąca będzie wymagana na naliczeniu przedmiotu. 
+
+
+\tableofcontents
+\part{Teoria}
+\include{lecture_0}
+\include{lecture_1}
+\include{lecture_2}
+\part{Laboratorium }
+\part{Metody Eksperymentalne}
+
+\part{Modelowanie urządzeń}
+
+\part{Dodatki}
+\appendix \include{appendix_1}
+
+\begin{thebibliography}{99}
+
+\bibitem{placeholder} 
+\url{https://placeholder}
+(dostęp: XX.XX.2024).
+
+\end{thebibliography}
+
+\end{document}
