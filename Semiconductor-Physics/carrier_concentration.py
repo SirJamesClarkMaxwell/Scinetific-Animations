@@ -3,8 +3,8 @@ from manimlib import *
 
 class CarrierConcentrationV1(InteractiveScene):
     def construct(self) -> None:
-        
-        self.frame.set_euler_angles(1.37580519e+00, 1.06666667e+00, 9.99200722e-16)
+
+        self.frame.set_euler_angles(1.37580519e00, 1.06666667e00, 9.99200722e-16)
 
         k_B = 0.025
         E_c = 1.0
@@ -30,13 +30,14 @@ class CarrierConcentrationV1(InteractiveScene):
             )
         )
         fermi_level = always_redraw(
-            lambda: DashedVMobject)(
+            lambda: DashedVMobject(
                 axes.get_parametric_curve(
                     lambda t: [t, ef_tracker.get_value(), 0.0],
                     t_range=[0, 3, 0.01],
                     color=YELLOW,
                 )
             )
+        )
 
         def calculate_middle_band_gap(conduction_band, valence_band) -> np.ndarray:
             x, y, z = valence_band.get_end()
@@ -49,8 +50,8 @@ class CarrierConcentrationV1(InteractiveScene):
         def show_animations_second_axis(axis):
             self.play(axis.animate.move_to(valence_band.get_end()))
             point = axis.get_origin()
-            self.play(Rotate(axis, PI / 2, RIGHT,about_point = point))
-            self.play(Rotate(axis, -PI / 2, IN,about_point = point))
+            self.play(Rotate(axis, PI / 2, RIGHT, about_point=point))
+            self.play(Rotate(axis, -PI / 2, IN, about_point=point))
             # second_axis.rotate(PI / 2, RIGHT, about_point=point)
 
         # second_axis.rotate(-PI/2,IN,about_point=point)
@@ -64,8 +65,9 @@ class CarrierConcentrationV1(InteractiveScene):
 
         def density_of_states(E):
             return np.sqrt(E - band_gap.get_value())
+
         def concentration(E):
-            return fermi_dirac_function(E)*density_of_states(E)
+            return fermi_dirac_function(E) * density_of_states(E)
 
         fermi_points = always_redraw(
             lambda: second_axis.get_graph(
@@ -84,11 +86,9 @@ class CarrierConcentrationV1(InteractiveScene):
 
         dos_points = always_redraw(
             lambda: second_axis.get_graph(
-                lambda x:
-                    density_of_states(x),
-                    x_range=[conduction_band.get_end()[0], 4],
-                    color = BLUE
-                    
+                lambda x: density_of_states(x),
+                x_range=[conduction_band.get_end()[0], 4],
+                color=BLUE,
             )
         )
 
@@ -100,14 +100,14 @@ class CarrierConcentrationV1(InteractiveScene):
                 fill_opacity=0.5,
             )
         )
-        
-        concentration_plot = always_redraw(lambda:
-            second_axis.get_graph(
+
+        concentration_plot = always_redraw(
+            lambda: second_axis.get_graph(
                 lambda E: concentration(E),
-                    x_range=[conduction_band.get_end()[0], 4],
-                    color = RED
-                    
-            ))
+                x_range=[conduction_band.get_end()[0], 4],
+                color=RED,
+            )
+        )
         concentration_area = always_redraw(
             lambda: second_axis.get_area_under_graph(
                 concentration_plot,
@@ -116,21 +116,27 @@ class CarrierConcentrationV1(InteractiveScene):
                 fill_opacity=0.5,
             )
         )
-        
+
         self.play(ShowCreation(axes))  # ,axes_labels)
         show_animations_second_axis(second_axis)
         # self.add(conduction_band, valence_band, fermi_level)
 
         # self.play(FadeIn(VGroup(axes)))
         self.wait()
-        self.play(LaggedStart(*[Write(item)for item in [conduction_band, valence_band, fermi_level]],lag_ratio=0.75,run_time = 2))
+        self.play(
+            LaggedStart(
+                *[Write(item) for item in [conduction_band, valence_band, fermi_level]],
+                lag_ratio=0.75,
+                run_time=2,
+            )
+        )
         # self.wait()
-        self.play(band_gap.animate.set_value(3),ef_tracker.animate.set_value(1.5))
+        self.play(band_gap.animate.set_value(3), ef_tracker.animate.set_value(1.5))
         # self.wait()
-        self.play(FadeIn(VGroup(fermi_points,fermi_area)))
-        self.play(FadeIn(VGroup(dos_points,dos_area)))
-        self.play(FadeIn(VGroup(concentration_plot,concentration_area)))
-        # self.add(dos_points,dos_area,fermi_points, fermi_area,concentration_plot,concentration_area)
+        self.play(FadeIn(VGroup(fermi_points, fermi_area)))
+        self.play(FadeIn(VGroup(dos_points, dos_area)))
+        self.play(FadeIn(VGroup(concentration_plot, concentration_area)))
+        self.add(dos_points,dos_area,fermi_points, fermi_area,concentration_plot,concentration_area)
         self.play(ef_tracker.animate.set_value(2.9))
-        # self.play(band_gap.animate.set_value(1.1),ef_tracker.animate.set_value(1.1/2))
-        # self.play(band_gap.animate.set_value(3),ef_tracker.animate.set_value(3/2))
+        self.play(band_gap.animate.set_value(1.1),ef_tracker.animate.set_value(1.1/2))
+        self.play(band_gap.animate.set_value(3),ef_tracker.animate.set_value(3/2))

@@ -1,6 +1,5 @@
 {
     "window.newWindowProfile": "Python",
-
     "files.exclude": {
         "**/*.aux": true,
         "**/*.log": true,
@@ -11,12 +10,30 @@
         "**/__pycache__/": true,
         "**/main.fdb_latexmk": true
     },
-
     "github.copilot.enable": {
         "*": false,
         "plaintext": false,
         "markdown": false,
         "scminput": false
     },
-    "todo-tree.tree.showBadges": false
+    "todo-tree.tree.showBadges": false,
+    "python.formatting.provider": "black",
+    "python.analysis.autoImportCompletions": true,
+    "python.linting.formattingProvider": "black",
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnSaveMode": "modifications",
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": "explicit",
+        "source.fixAll": "explicit"
+    },
+    "files.exclude": {
+        "**/__pycache__": true,
+        "**/.pytest_cache": true,
+        "**/.venv": true,
+        "**.aux": true,
+        "**.log": true,
+
+    },
 }

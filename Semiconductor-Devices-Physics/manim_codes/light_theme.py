@@ -4,7 +4,6 @@
 # import light_theme
 
 from manim import *
-
 config.background_color = WHITE
 
 # Those are objects which are WHITE by default

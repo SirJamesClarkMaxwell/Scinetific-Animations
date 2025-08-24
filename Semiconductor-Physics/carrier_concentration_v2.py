@@ -37,12 +37,5 @@ class CarrierConcentrationV2(InteractiveScene):
         
         
         
-class Testing(InteractiveScene):
-    def construct(self) -> None:
-        s = Square()
-        p = Pointer(s,"Square: Area = $a^2$",stroke_width=1,track=True)
-        self.add(s)
-        self.play(ShowCreation(p))
-        self.play(s.animate.shift(LEFT))
-        
+
         
