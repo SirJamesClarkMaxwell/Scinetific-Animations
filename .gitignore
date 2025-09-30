@@ -1,5 +1,6 @@
 **pycache**
 videos
+**media**
 *.log*
 *.pdf
 *.gz
@@ -8,3 +9,4 @@ videos
 *.aux
 *.out
 *.toc
+*.mp4
