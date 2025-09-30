@@ -14,7 +14,8 @@
         "*": false,
         "plaintext": false,
         "markdown": false,
-        "scminput": false
+        "scminput": false,
+        "python": true
     },
     "todo-tree.tree.showBadges": false,
     "python.formatting.provider": "black",
@@ -34,6 +35,5 @@
         "**/.venv": true,
         "**.aux": true,
         "**.log": true,
-
     },
 }
