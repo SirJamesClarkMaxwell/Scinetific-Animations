@@ -8,3 +8,6 @@ videos
 *.aux
 *.out
 *.toc
+**media**
+**.venv**
+**slides**

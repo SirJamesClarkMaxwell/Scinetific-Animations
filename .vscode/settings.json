@@ -1,8 +1,11 @@
 {
     "window.newWindowProfile": "Python",
-
     "files.exclude": {
         "**/*.aux": true,
+        ".venv": true,
+        ".github": true,
+        "docs": true,
+        "tests": true,
         "**/*.log": true,
         "**/*.out": true,
         "**/*.fls": true,
@@ -11,12 +14,24 @@
         "**/__pycache__/": true,
         "**/main.fdb_latexmk": true
     },
-
     "github.copilot.enable": {
         "*": false,
         "plaintext": false,
         "markdown": false,
         "scminput": false
     },
-    "todo-tree.tree.showBadges": false
+    "pylint.enabled": true,
+    "pylint.importStrategy": "fromEnvironment",
+    "pylint.args": [
+        "--disable=E1125,E0239,E0611,W0614,W0401,C0114,C0115,C0116"
+    ],
+    "todo-tree.tree.showBadges": false,
+    "python.analysis.typeCheckingMode": "normal",
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportCallIssue": false,
+        "reportWildcardImportFromLibrary": false,
+        "reportArgumentType":false,
+        "reportMissingTypeArgument": false
+    },
+    "python.analysis.autoImportCompletions": true
 }

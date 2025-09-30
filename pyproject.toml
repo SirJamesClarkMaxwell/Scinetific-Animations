@@ -1,0 +1,19 @@
+[project]
+name = "scinetific-animations"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "manim>=0.19.0",
+    "manim-slides>=5.5.1",
+    "pyqt6>=6.9.1",
+    "pyside6>=6.9.1",
+    "setuptools>=80.9.0",
+]
+[tool.pyright]
+reportMissingTypeStubs = false
+reportWildcardImportFromLibrary = false
+
+[tool.mypy]
+ignore_errors = true
