@@ -1,0 +1,21 @@
+{
+    "window.newWindowProfile": "Python",
+    "files.exclude": {
+        "**/*.aux": true,
+        "**/*.log": true,
+        "**/*.out": true,
+        "**/*.fls": true,
+        "**/*.toc": true,
+        "**/*.synctex.gz": true,
+        "**/__pycache__/": true,
+        "**/main.fdb_latexmk": true
+    },
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false,
+        "python": true
+    },
+    "todo-tree.tree.showBadges": false
+}

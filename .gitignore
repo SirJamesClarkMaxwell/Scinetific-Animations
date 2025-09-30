@@ -1,3 +1,12 @@
-*pycache*
+**pycache**
 videos
-**.log**
+**media**
+*.log*
+*.pdf
+*.gz
+*.fls
+*.fdb_latexmk
+*.aux
+*.out
+*.toc
+*.mp4

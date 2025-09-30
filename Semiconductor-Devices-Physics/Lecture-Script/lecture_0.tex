@@ -1,0 +1,507 @@
+hbar\chapter{Przypomnienie wiadomości z wykładu o półprzewodnikach}
+W tym rozdziale przypomnimy podstawowe informacje z fizyki półprzewodników. W pierwszej części przypomnimy sobie podstawowe fakty 
+z mechaniki kwantowej, fizyki statystycznej oraz odpowiemy sobie na pytanie, co chcemy osiągnąć i dlaczego półprzewodniki są tak interesujące. 
+\newline\newline
+\noindent Poniższy rozdział powstał w dużej mierze na podstawie wykładu z \textbf{Fizyki Półprzewodników} dr inż. Marka Maciaszka. 
+\newline\newline
+
+\noindent Powodem, dla którego półprzewodniki są obiektem intensywnych badań jest fakt, iż pozwalają kontrolować przepływ prądu lub obecność/brak napięcia 
+w sposób automatyczny, bez użycia mechanicznych przełączników. 
+
+\section{Mechanika kwantowa i Fizyka Statystyczna}
+    Naszą opowieść zaczniemy od przypomnienia wyprowadzenia \hyperlink{\ref{sec: DOS}}{gęstości stanów} 
+    \hyperlink{\ref{sec: F-D}}{rozkładu Fermiego-Diraca} oraz \hyperlink{\ref{sec: free particle}}{cząstki swobodnej}. Od razu będziemy się 
+    posługiwać obrazkiem energetycznym. Aby móc mówić o obrazku energetycznym najpierw zastanówmy się, ile mamy dostępnych stanów energetycznych w pasmach.
+
+    \subsection{Gęstość stanów} \label{sec: DOS}
+        Funkcja gęstości stanów opisuje, ile stanów energetycznych jest dostępnych dla elektronów w jednostce objętości i w danym przedziale energii. 
+        Mówiąc inaczej, określa ona, o ile wzrośnie liczba dostępnych stanów $\Delta N$, gdy energia zostanie zwiększona o $\Delta E$. 
+
+        \noindent Ze względu na ogromną liczbę atomów w krysztale (rzędu $10^{23}$ w objętości $1\,\text{cm}^3$), możliwe poziomy energetyczne 
+        tworzą bardzo gęstą siatkę. W związku z tym w opisie właściwości elektronowych możemy traktować energię jako zmienną ciągłą, a
+        funkcję gęstości stanów $g(E)$ jako funkcję ciągłą zależną od energii. Ponieważ funkcja gęstości stanów jest funkcją ciągłą to iloraz różnicowy 
+        zmieniamy na pochodną.
+        \begin{equation}\label{eq: DOS}
+            g(E) = \frac{1}{V} \frac{\Delta N}{\Delta E} \xrightarrow[\Delta E \to 0]{} \frac{1}{V}\frac{dN}{dE}
+        \end{equation}
+        \noindent Aby policzyć liczbę stanów w przestrzeni odwrotnej zbadamy przyrost jej objętości względem objętości elementarnej.  
+        \begin{align}
+            dN = \frac{dV_k}{V_{k min}} \nonumber
+        \end{align}
+        Aby policzyć $dV_k$ wykorzystamy relację $dV_k = \frac{dV}{dk}dk$. Objętość w przestrzeni odwrotnej jest opisana równaniem $V_k = \frac{4}{3}\pi k^3$, co po zróżniczkowaniu względem k i pomnożeniu przez dk
+        dk daje: $dV_k = 4\pi k^2 dk$. Objętość elementarna w przestrzeni odwrotnej wynosi: $V_{k min} = \left(\frac{2\pi}{Na}\right)^3 = \frac{8\pi^3}{V}$
+        Po podstawieniu do równania na dN
+        \begin{equation}
+            dN = \frac{dV_k}{V_{k min}} = \frac{4\pi k^2 V}{8\pi^3} \nonumber
+        \end{equation}
+        Jedyne co nam zostało, to wyznaczenie różniczki energii w zależności od wektora falowego. Całe wyprowadzenie przeprowadzamy w przybliżeniu gazu elektronów swobodnych, 
+        co oznacza że wyrażenie na energię przyjmuje postać:
+        \begin{equation}
+            E(k) = \frac{\hbar^2k^2}{2m} \Rightarrow k^2 = \frac{2mE}{\hbar^2}; dE = \frac{\sqrt{2m}}{\hbar 2\sqrt{E}}\nonumber
+        \end{equation}
+        Po podstawieniu wszystkich składników do równania \ref{eq: DOS}
+        \begin{align*}
+            g(E) &= \frac{1}{V}\frac{\textcolor{blue}{dN}}{\textcolor{red}{dE}} = \frac{1}{V}\textcolor{blue}{\frac{4\pi 2mEV}{8\pi^3 \hbar^2}}\textcolor{red}{\frac{\sqrt{2m}}{\hbar 2 \sqrt{E}}}\\
+            &= \frac{4\pi}{8\pi^3}(2m)^{3/2}\frac{\sqrt{E}}{\hbar^3}\\
+            &= 4\pi\left(\frac{2m}{\hbar^2}\right)^{3/2}\sqrt{E}
+        \end{align*}
+        Dla pasma przewodnictwa/walencyjnego funkcja gęstości stanów przyjmuje postać:
+        \begin{equation}
+            g(E-E_C) = 4\pi\left(\frac{2m}{\hbar^2}\right)^{3/2}\sqrt{E - E_C} \nonumber
+        \end{equation}
+        \begin{equation}
+            g(E_V - E) = 4\pi\left(\frac{2m}{\hbar^2}\right)^{3/2}\sqrt{E_V - E} \nonumber
+        \end{equation}
+        Podsumowywując, aby wyznaczyć gęstość stanów dla gazu elektronowego:
+        \begin{enumerate}
+            \item Zapisujemy definicję gęstości stanów
+            \item Znajdujemy objętość w przestrzeni odwrotnej i różniczkujemy ją po wektorze falowym 
+            \item obliczamy dN licząc ile najmniejszych stanów zmieści się w małym przyroście objętości
+            \item Wyznaczamy z równania na energię swobodnego elektronu kwadrat wektora falowego oraz różniczkę energii
+            \item Wstawiamy wszystko w jedno równanie i upraszczamy
+        \end{enumerate}    
+        Podane wyprowadzenie zostało przeprowadzone dla 3 wymiarów, analogiczne rozumowanie można przeprowadzić dla 1D oraz 2D, wtedy gęstość stanów będzie proporcjonalna odpowiednio do $1/\sqrt{E}$ oraz stałej. 
+    \subsection{Funkcja Fermiego-Diraca} \label{sec: F-D}
+        Wyprowadznia rozkładu Fermiego-Diraca nie będziemy przypominać, w kontekście naszych rozważań jego wyprowadzenie jest mało istotne. To, co jest ważne
+        to jego właściwości oraz ich konsekwencje. Funkcja rozkładu Fermiego-Diraca (potem oznaczana jako $f_{F-D}$) ma postać opisaną równaniem nr \ref{eq: Fermi-Dirac equation} gdzie zmienną niezależną
+        jest energia a parametrami rozkładu energia Fermiego $E_f$ oraz T. 
+        \begin{equation}
+            f_{F-D}(E;E_f,T) = \frac{1}{1+e^{\frac{E-E_f}{k_bT}}}
+            \label{eq: Fermi-Dirac equation}
+        \end{equation}
+        Rozkład $f_{F-D}$ mówi o prawdopodobieństwie obsadzenia stanu o energii E. Można na to spojrzeć z drugiej strony, jeśli wycałkujemy rozkład od zadanej energii do nieskończoności to otrzymalibyśmy ilość nośników które mają energię większą 
+        od zadanej. Jak można zobaczyć na obrazku nr (dodać obrazek) rozkład dla T = 0K jest schodkowy, oznacza to że wszystkie stany do energii Fermiego są obsadzone a wszystkie powyżej puste. Sytuacja się zmienia dla temperatur większych od zera 
+        bezwzględnego. Rozkład się rozmywa, oznacza to że istnieje niezerowe prawdopodobieństwo obsadzenia stanów powyżej energii Fermiego (nazywanej też poziomem fermiego - tego nazewnictwa też będziemy konsekwętnie używać).  \newline\newline
+        \noindent \textcolor{orange}{TODO: dodać obrazek dla kilku temperatur dla rozkładu FD}
+
+    \subsection{Cząstka swobodna} \label{sec: free particle}
+        Mówienie o cząstce swobodnej w kontekście półprzewodników może się wydawać na pierwszy rzut oka dziwne, ponieważ mamy bardzo skomplikowany Hamiltonian i wielociałowy problem, który jest nierozwiązywalny analitycznie oraz nawet przy użyciu 
+        superkomputerów i wielu bardzo silnych przybliżeń kosztowny czasowo i obliczeniowo. Jak się przekonamy w rozdziale \ref{sec: effective mass and parabolic approx} przybliżenie swobodnych elektronów w pewnych okolicznościach bardzo dobrze opisuje 
+        zachowanie się ich w półprzewodniku. 
+
+        \noindent Problem, jaki chcemy rozwiązać, to niezależne od czasu równanie Schr\"odingera dla wartości E, dla struny sklejonej na końcach (warunki Borna-Karmana) o długości L.
+        \begin{equation}
+            -\frac{\hbar^2}{2m}\frac{d^2 \psi}{d x^2} = E \psi  \nonumber
+        \end{equation}
+        Sprowadźmy teraz problem do jego bezwymiarowej postaci 
+        \begin{align*}
+            -\frac{\hbar^2}{2m}&\frac{d^2 \psi}{d x^2} = E \psi \left| \cdot -\frac{2m}{\hbar^2} \right. \nonumber \\
+            \frac{d^2 \psi}{d x^2} &= \epsilon \psi \left|\epsilon  = \frac{2mE}{\hbar^2}  \right. \nonumber
+        \end{align*}
+        Jest to znane wszystkim równanie różniczkowe, którego ogólnym rozwiąznaiem jest funkcja $\psi(x) = Ae^{ikx}$ która, po wstawieniu do równania i zaaplikowaniu warunków brzegowych daje nam równanie 
+        $k = \sqrt{\epsilon} = \frac{\sqrt{2mE}}{\hbar}$ przekształcając, to aby otrzymać wektor falowy otrzymujemy bardzo ważną zależność
+        \begin{equation}
+            E = \frac{\hbar^2 k^2}{2m} \label{eq: free particle}
+        \end{equation}
+        Owa zależność oznacza, że jeżeli zauważymy, że energia jest proporcjonalna do kwadratu wektora falowego to możemy mówić o cząstce swobodnej lub prawie swobodnej. To z kolei oznacza że możemy ją traktować klasycznie. 
+        Możemy zapomnieć \footnote{nie tak dokońca zapomnieć, jak się okażę przy omawianiu tunelowego mechanizmu transportu będziemy musieli wyjąć mechanikę kwantową z szafy, do której narazie ją chowamy} o całej mechanice kwantowej 
+        i będziemy mogli się posługiwać aparatem matematycznym mechaniki klasycznej.    
+
+\section{Przybliżenie paraboliczne, masa efektywna}\label{sec: effective mass and parabolic approx}
+    \noindent \textcolor{orange}{ TODO wstawić obrazek struktury pasmowej dla krzemu} \newline \newline
+
+    \noindent Zanim zaczniemy rozmawiać o tym co się dzieje w półprzewodniku w różnych temperaturach, podczas jego oświetlenia czy kiedy przyłożymy napięcie dodatnie lub ujemne, zastanówmy się jakie 
+    nad przybliżeniami, jakie możemy przyjąć aby stosunkowo łatwo było nam opisać zachowanie nośników. 
+    \newline \newline
+    \noindent Zdecydowanie najważniejszym przybliżeniem, jakie przyjmiemy jest \textbf{paraboliczne przybliżenie pasm} wyprowadzone w sposób 
+    bardziej ścisły \hyperlink{\ref{appendix: quadratic approximation}}{tutaj}.Końcowym wynikiem dla przybliżenia jednoelektronowego oraz silnie związanych elektronów dla 
+    jednowymiarowego łańcucha atomowego o długości stałej sieciowej a jest relacja dyspersji w postaci \ref{eq: dispersion realition 1d}. Ze względu na periodyczność funkcji cosinus 
+    z dalszą analizą możemy sie ograniczyć do zakresu $k\in [-\frac{\pi}{a};\frac{\pi}{a}]$. Ten zakres wektora falowego nazwiemy \textbf{Pierwszą strefą Brillouina} (czyt. Briju). 
+    \begin{equation}
+        E(k) = E_i + A_0 + 2A_1 cos(ka) \quad (3D) \label{eq: dispersion realition 1d}
+    \end{equation}
+    
+    \noindent Rozwińmy teraz funkcję cosinus w okolicy k = 0, w szerek Taylora oraz zauważmy że przed cosinusem stoją same stałe, nazwijmy je $E_0$:
+    \begin{equation}
+        cos(ka) \approx 1 - \frac{k^2a^2}{2}\nonumber
+    \end{equation}    
+    Co po wstawieniu do równania \ref{eq: dispersion realition 1d} daje nam:
+    \begin{equation}
+        E(k) \approx E_0 + E_1 \frac{k^2a^2}{2} \label{eq: quadaratic approximation}
+    \end{equation}
+    Stałe $E_0$ oraz $E_1$ zależą od tego, które elektrony rozważamy, ściśle mówiąc, są to całki wymiany i zależą one "tylko" (do sprawdzenie prawdziwość tego twierdzenia) od ilu sąsiednich atomów uwzdlędnimy korektę do potencjału. \newline\newline
+    \noindent\textcolor{orange}{todo: dodać rysunek dla równych E0 i E1 (spodziewam się rysunku podobnego do tego z wykładu Marka)}
+
+    \noindent Przypomnijmy sobie teraz jak wyglądała zależność energii od wektora falowego dla cząstki swobodnej \ref{eq: free particle}. jeżeli teraz porównamy te dwa wyrażenia, to otrzymamy zależność \ref{eq: free part equality}. 
+    Ponieważ posługujemy się energiami, a te są relatywne to możemy opuścić wyraz $E_0$ nie tracąc ogólności dalszych rozważań. Teraz możemy zauważyć że oba wyrazy są proporcjonalne do $k^2$. Chcielibyśmy aby obie te wielkości były równe, 
+    dlatego wprowadzamy pojęcie \textbf{masy efektywnej} oznaczanej jako $m^*$. Możemy myśleć o masie efektywnej jak o poprawce do masy elektronu ze względu na znajdowanie się w potencjale krystalicznym. 
+    \begin{equation}
+        \frac{\hbar^2 k^2}{2m} = E_0 - E_1 \frac{k^2}{2} \label{eq: free part equality}
+    \end{equation}
+    W praktyce liczenie całek wymiany i przekrywania jest bardzo trudne i niewydajne. Zamiast tego, znając (z obliczeń ab initio) zależność energii od wektora falowego liczymy drugą pochodną energii po wektorze falowym i 
+    z tego wyznaczamy wartość masy efektywnej.  
+    \begin{tcolorbox}[colback=black!15!white, colframe=gray!25!black, title=masa efektywna]
+        \begin{equation}
+            m^* = \hbar^2 \left(\frac{ \partial^2 E}{\partial \vec{k}^2 }\right)^{-1}
+        \end{equation}
+    \end{tcolorbox}
+
+    \noindent Kilka słów jeszcze o wektorze falowym i pędzie. Na podstawach fizyki bardzo często wprowadza się analogię między wektorem falowym a częstotliwością.
+    Tak jak częstotliwość określa liczbę drgań w czasie (np. na sekundę), tak wektor falowy określa liczbę drgań w przestrzeni (np. na metr). W mechanice klasycznej takie rozumowanie jest 
+    całkowicie poprawne, w mechanice kwantowej już nie jest. Dlatego lepiej myśleć o tym jako o liczbie kwantowej, która numeruje stany w układzie \newline \newline
+    \noindent \textcolor{orange}{TODO: dodać obrazek ilustrujący drganie na metr} \newline
+    \noindent \textcolor{orange}{TODO: przedyskutować zasadę zachowania wektora falowego, oraz kwazi-pęd} 
+
+\section{Półprzewodnik domieszkowany}
+
+    \subsection{Defekty w półprzewodnikach}
+        Półprzewodnik samoistny \footnote{taki bez intencjonalnie wprowadzonych defektów w postaci domieszkowania} ma niewielkie znaczenie użytkowe i zasadniczo nie różni się funkcjonalnie od izolatora. 
+        Dlatego wprowadzamy dodatkowe atomy które wprowadzają dodatkowe poziomy energetyczne w przerwie energetycznej, dzięki którym możemy kontrolować opór półprzewodnika. 
+        Wprowadzając obce atomy do półprzewodnika zaburzamy periodyczność sieci krystalicznej, wskutek czego wytwarzamy defekty. Możemy je podzielić na dwie klasy ze względu na:
+        \begin{enumerate}
+            \item Położenie w przerwie energetycznej 
+            \item Pełnioną funkcję
+        \end{enumerate}
+        \textbf{Donory} to defekty, które w stanie ładunkowym -1 oddały jeden elektron do \textbf{pasma przewodnictwa} \\ 
+        \textbf{Akceptory} to defekty, które w stanie ładunkowym +1 \textbf{przyjęły} jeden elektron z pasma walencyjnego, pozostawiając po sobie \textbf{dziurę}.  \\ 
+        
+        \noindent \textbf{Płytkie} poziom energetyczny defektu znajduje się w odległości  $\sim 3kT$ od krawędzi pasma walencyjnego lub przewodnictwa \\
+        \textbf{Głębokie} poziom energetyczny defektu znajduje się w odległości $>3kT$ od krawędzi pasma walencyjnego lub przewodnictwa \\
+
+        \noindent Donory i Akceptory zazwyczaj są płytkimi defektami, a defekty głębokie efektywnymi centrami rekombinacyjnymi (więcej o rekombinacji w \ref{sec: iluminated semiconductor} i \ref{sec: SRH}). 
+        Natomiast nie jest to jednak regułą.\newline\newline
+        \noindent \textcolor{orange}{TODO:  dodać przykład kiedy tak nie jest.}
+
+    \subsection{Poziom Fermiego}
+        Poziom Fermiego jest jedną z kluczowych wielkości w fizyce półprzewodników i ich przyrządów. Niestety bardzo często jest przez studentów błędnie lub w ogóle nie rozumiany.
+        Jak już wspomnieliśmy energia Fermiego to taka energia, dla której prawdopodobieństwo obsadzenia wynosi 0.5. Nieraz błędnie jest podawana następująca definicja: \textit{Energia Fermiego: średnia energia elektronów}
+        Problem z tą definicją jest taki że jest ona z gruntu błędna. Taka definicja mogłaby być poprawna jedynie dla idealnego gazu elektronowego w bardzo specyficznych warunkach, ale nie dla półprzewodnika. Poziom Fermiego jest tak ważny ponieważ:
+        \begin{enumerate}
+            \item \textbf{Definiuje stan równowagi} 
+            \item \textbf{Pozwala na policzenie koncentracji nośników w pasmach}
+            \item \textbf{Ułatwia rysowanie diagramu pasmowego urządzeń półprzewodnikowych}
+        \end{enumerate}
+        \textcolor{orange}{TODO: przedyskutować co powinno być jeszcze w tym akapicie} \newline\newline
+        \noindent Istotnym, lecz bardzo nieintuicyjnym aspektem jest obsadzenie poziomów defektowych w zależności od poziomu fermiego. Jest prosta zasada na zapamiętanie tej zależności:
+        Jeśli poziom Fermiego znajduje się \textbf{powyżej} poziomu defektowego, oznacza to, że poziom jest obsadzony \textbf{elektronem}; jeśli \textbf{poniżej} — to nie. Ta reguła stosuje się do dużych odległości poziomu fermiego 
+        od energii defektu, w przypadku kiedy poziom fermiego zbliża się do defektu to część defektów będzie obsadzona a część nie. Szerzej omówimy to w rozdziale poświęconym defektom i rekombinacji \ref{note: obsadzenie defektów od Ef}. 
+
+    \subsection{Koncentracja nośników w pasmach}
+        W tym rozdziale przypomnimy sobie jak opisywać koncentrację nośników w pasmach w zależności od: 
+        \begin{enumerate}
+            \item Koncentracji domieszek
+            \item Poziomu defektowego w przerwie energetycznej
+        \end{enumerate}
+        Najbardziej ogólne wyrażenie na koncentrację nośników w paśmie przewodnictwa (dla elektronów) ma postać:
+        \begin{equation}
+            n = \int \limits_{E_F}^{\infty} g(E)f_{F-D}(E,T)\:dE = 
+            \int \limits_{E_F}^{\infty} 4\pi\left(\frac{2m^*}{\hbar^2}\right)^{3/2}\sqrt{E - E_C}\frac{1}{1+e^{\frac{E - E_F}{k_BT}}} \: dE
+        \end{equation}
+        \subsubsection{Koncentracja w zależności od poziomu Fermiego}
+            Ta całka jest nierozwiązywalna w sposób analityczny, matematykom zostawiamy tutaj dowód. Natomiast możemy skorzystać z przybliżenia Boltzmanowskiego
+            rozkładu Fermiego-Diraca. Jeżeli różnica energii jest odpowiednio duża to część wykładnicza jest dużo większa od jedynki, dzięki czemu całka daje się już policzyć.
+            Dokładne rachunki są przedstawione w \ref{appendix: carrier concentration}. Dla nas jest ważny końcowy wynik \ref{eq: electron concentration}, jest on jednym z najważniejszych równań w 
+            całej fizyce półprzewodników z kilku powodów.
+            \begin{tcolorbox}[colback=black!15!white, colframe=gray!25!black, title=koncentracja elektronów]
+                \begin{equation}
+                    n(E_F,T) = 4\pi \left( \frac{2m^*k_BT}{\hbar^2}\right)^{3/2}e^{-\frac{E_C - E_F}{k_BT}} = N_Ce^{-\frac{E_C - E_F}{k_BT}}
+                    \label{eq: electron concentration}
+                \end{equation}
+            \end{tcolorbox}
+            \noindent Po pierwsze pokazuje zależnośc koncentracji od temperatury a po drugie, jeśli znamy poziom Fermiego, to pozwala nam policzyć koncentracje nośników.
+            Znajomość koncentracji jest punktem wyjścia do analizy mechanizmów transportowych. Koncentracja nośników determinuje również przewodnictwo elektryczne materiału, które chcemy kontrolować. 
+            Chcielibyśmy też zwrócić uwagę na to, że $N_C$, czyli efektywna gęstość stanów, zależy od temperatury ale jest to zależność znacznie słabsza niż wykładnicza. 
+            O efektywnej gęstości stanów możemy myśleć jak o maksymalnej liczby elektronów, którą możemy umieścić w paśmie przewodnictwa (póki używamy przybliżenia Boltzmanowskiego). 
+            Drugim istotnym faktem jest konwencja, którą przyjęliśmy i której będziemy konsekwentnie się trzymać, minus na początku wykładnika funkcji exp. Można to zapamiętać w ten sposób:
+            Jeśli przed wyrazem exp mamy maksymalną liczbę dostępnych stanów to za nią musi stać coś mniejszego od jedynki $\rightarrow$ exp(-).  
+            \newline\newline
+            \noindent\textcolor{orange}{TODO: koniecznie dodać tu rysunki pokazujące jak zależy pole pod wykresem iloczynu funkcji gęstości stanów, energii fermiego i T i przerwy energetycznej}
+
+        \subsubsection{Koncentracja nośników od koncentracji domieszek}
+            Wprowadzając dodatkowe stany w przerwie energetycznej zmieniamy położenie poziomu fermiego. Dlaczego? Załóżmy, że wprowadziliśmy $10^{15}$ donorów w odległości 
+            0.2 eV od pasma przewodnictwa. Przy założeniu temperatury pokojowej wiemy że wszystkie domieszki zostaną zjonizowane poziom fermiego nie będzie w połowie przerwy energetycznej a trochę wyżej.
+            Dokładnie mówiąc to przesunie się 0.31 eV w kierunku pasma przewodnictwa. Może być to nieco mylące, że najpierw napisaliśmy wyrażenie na zależność koncentracji od poziomu fermiego a 
+            zakładamy zadaną koncentrację domieszek i na tej podstawie wyznaczamy przesunięcie poziomu Fermiego. Należy na to popatrzeć w ten sposób: poziom fermiego jest rzeczą 
+            wtórną, arbitralnie wprowadzoną wielkością, bardzo przydaną, ale tylko parametrem który nie ma żadnego związku z fizyką. To co ma związek z fizyką w tym przypadku są
+            termiczne wzbudzanie elektronów z poziomu defektowego do pasma przewodnictwa, zmianę koncentracji, która z kolei powoduje przesunięcie poziomu Fermiego. 
+
+    \subsection{Zależności temperaturowe}
+        Powodów, dla których zależności temperaturowe są istotne, jest kilka. Po pierwsze urządzenia pracują w różnych warunkach i pod różnymi temperaturami. 
+        Dla przykładu inne będą wymagania dla diody pracującej w kosmosie, a inne dla klucza tranzystorowego w przetwornicy napięcia. Zamiana tych dwóch diod miejscami skutkowałaby niedziałającymi urządzeniami. 
+        \subsubsection{Półprzewodnik samoistny}
+            Zacznijmy od najprostszego przypadku, półprzewodnika samoistnego i wpływu temperatury na koncentracje elektronów w paśmie przewodnictwa. 
+            Ponieważ mamy do czynienia z półprzewodnikiem samoistnym (bez intencjonalnie wprowadzonych defektów/domieszek) jedynym źródłem elektronów w paśmie przewodnictwa są  te
+            wygenerowane termicznie z pasma walencyjnego. Poziom Fermiego znajduje się w połowie przerwy \footnote{Nie byłaby to prawda dla znacząco różnych mas efektywnych elektronów i dziur.} 
+            Po podstawieniu do równania \ref{eq: electron concentration} $E_F = (E_C - E_V)/2$ dostaniemy zależność koncentracji elektronów w półprzewodniku samoistnym w zależności od temperatury, analogicznie będzie dla dziur. 
+            Równania \ref{eq: carrier concentration as func of T - intrinsic} można również otrzymać w sposób bardziej formalny, przechodząc bowiem przez prawo działania mas. \\
+            \begin{equation}
+                n_i(T) = N_Ce^{-\frac{E_g}{2kT}} \qquad  p_i(T) = N_Ve^{-\frac{E_g}{2kT}} \label{eq: carrier concentration as func of T - intrinsic}
+            \end{equation}
+            Prawo działania mas mówi, że iloczyn koncentracji elektronów i dziur jest równy kwadratowi koncentracji samoistnej, która nie zależy od poziomu Fermiego. 
+            \footnote{Jest to jedna z wersji prawa działania mas, zastosowana do półprzewodników. To prawo ma zastosowanie w wielu innych dziedzinach, \href{https://en.wikipedia.org/wiki/Law_of_mass_action}{Law of mass action}}
+            \begin{equation}
+                np = n_i^2 = N_CN_Ve^{-\frac{E_C - E_F}{kT}}e^{-\frac{E_F - E_V}{kT}} = N_CN_Ve^{-\frac{E_C - E_V}{kT}} = N_CN_Ve^{-\frac{E_g}{kT}} \label{eq: ion mass law}
+            \end{equation}
+            Jeżeli skorzystamy teraz z faktu, że przy generacji termicznej generujemy tyle samo dziur co elektronów  n = p, to w wyniku pierwiastowania \ref{eq: ion mass law} otrzymamy \ref{eq: carrier concentration as func of T - intrinsic}, 
+            przy założeniu takich samych gęstości stanów, co w wielu przypadkach jest dobrym przybliżeniem. Zatrzymajmy się na chwilę nad mianownikiem czynnika wykładniczego. Występowanie dwójki w mianowniku nie jest intuicyjne.
+            \textbf{Energia aktywacji}\footnote{Energia którą należy dostarczyć nośnikowi aby stał się aktywnym nośnikiem prądu} nośników okazuje się być dwukrotnie mniejsza, niż moglibyśmy się spodziewać. Obecność liczby 2 w mianowniku wynika z tego, że generujemy jednocześnie dwa nośniki: elektron oraz dziurę.
+            \newline\newline
+            \noindent \textcolor{orange}{TODO: przedyskutować dopisanie tutaj fragmentu który bardziej to wyjaśnia}
+
+        \subsubsection{Półprzewodnik domieszkowany - pojedyncza domieszka} \label{seq: Ef(T,Nd)} \label{note: obsadzenie defektów od Ef}
+        
+            \noindent \textcolor{orange}{TODO: dodać wykres przerwy energetycznej z zaznaczonym poziomem defektowym i odległościami od pasm}
+            \begin{wrapfigure}{l}{0.5\textwidth}
+                \centering
+                \fbox{\parbox[c][100pt][c]{0.5\textwidth}{\centering Obrazek w przygotowaniu}}
+                %\includegraphics[width=\textwidth]{}
+                \caption{Schemat przerwy energetycznej z poziomem pojedyńczym donorem}
+                \label{fig: bandgap-defect}
+            \end{wrapfigure}
+
+            \noindent Dla półprzewodnika samoistnego w stanie równowagi sposób wyznaczenia koncentracji nośników w pasmach był prosty, niemal trywialny. W przypadku półprzewodnika domieszkowanego (przeanalizujemy domieszkowanie typu n, analogiczne rozumowanie dotyczy domieszkowania typu p) musimy wziąć pod uwagę zarówno generacje termiczną jak i wkład poszczególnych defektów. Przeaanalizujmy na początek wpływ pojedynczej domieszki donorowej, opisanej równaniem
+            \ref{eq: carrier concentration as func of T - n doped } na koncentrację elektronów. Poniższe równanie jest w pełni wyprowadzone w \ref{appendix: n(T) in n doped semiconductor}, nie zamieszczaliśmy jej tutaj dla zachowania przejrzystości tekstu. Warto wiedzieć jak to wyprowadzić, natomiast dla nas ważniejsze jest rozumienie koncentracji i mechanizmów, które stoją za tym równaniem. 
+            \begin{equation}
+                n(T) = \frac{2N_D}{1 + \sqrt{1 + 4\frac{N_D}{N_C}e^{\frac{E_C - E_d}{kT}}}} \label{eq: carrier concentration as func of T - n doped }
+            \end{equation}
+            
+            \noindent Dla temperatur niskich ( w zakresie 100K - 150K ) jedyne elektrony znajdujące się w paśmie to elektrony pochodzące od zjonizowanych domieszek. W bardzo niskich temperaturach nie wszystkie domieszki zostaną zjonizowane, 
+            konsekwencją czego jest położenie poziomu fermiego \textbf{pomiędzy} krawędzią pasma przewodnictwa a poziomem defektowym. Jest to obszar, który nazywamy wymrażaniem nośników, na rysunku \ref{fig: Ef-vs-T-n-single-doping} odpowiada 
+            to niebieskiemu. Ponieważ temperatura jest niska to czynnik $4 \frac{N_D}{N_C}e^{\frac{E_C - E_d}{kT}}$ jest dużo większy od 1, dzięki czemu możemy cały mianownik przybliżyć przez $2\sqrt{\frac{N_D}{N_C}}e^{\frac{E_C - E_d}{2kT}}$
+            co końcowo daje przybliżenie \textcolor{orange}{(pamiętać aby kolory się zgadzały)}.
+            \begin{equation}
+                n(T) = \sqrt{N_CN_D}e^{-\frac{E_C - E_d}{2kT}} \nonumber
+            \end{equation}
+            W dalszej kolejności mamy obszar nasycenie (zielony), koncentracja nośników się nie zmienia, ponieważ wszystkie domieszki zostały już zjonizowane a temperatura jeszcze jest za niska aby można było mówić o 
+            znaczącej generacji termicznej. Na samym końcu (czerwony) obszar samoistny. Dominuje wtedy generacja termiczna międzypasmowa.
+            \begin{figure}[H]
+                \centering
+                \begin{minipage}[t]{0.48\textwidth}
+                    \centering
+                    % \includegraphics[width=\textwidth]{graph1}
+                    \fbox{\parbox[c][100pt][c]{0.9\textwidth}{\centering Obrazek w przygotowaniu}}
+                    \caption{Zależność $\log(n)$ od $1000/T$ dla półprzewodnika z pojedynczą domieszką donorową}
+                    \label{fig: logn-vs-invT-}
+                \end{minipage}
+                \hfill
+                \begin{minipage}[t]{0.48\textwidth}
+                    \centering
+                    % \includegraphics[width=\textwidth]{graph2}
+                    \fbox{\parbox[c][100pt][c]{0.9\textwidth}{\centering Obrazek w przygotowaniu}}
+                    \caption{Poziom Fermiego $E_F(T)$ w półprzewodniku typu n z pojedynczą domieszką.}
+                    \label{fig: Ef-vs-T-n-single-doping}
+                \end{minipage}
+            \end{figure}
+            % \newline\newline
+            \noindent \textcolor{orange}{TODO: dodać wykres log(n) (1000/T): wymrażanie, nasycenie, samoistny }\newline
+            \noindent \textcolor{orange}{TODO: dodać wykres zachowania poziomu fermiego w Eg od temperatury}\newline
+            
+            \noindent Zastanówmy się teraz, jak intuicyjnie można wytłumaczyć zależność poziomu fermiego od temperatury, która została przedstawiona na rysunku 
+            \ref{fig: Ef-vs-T-n-single-doping}. Wyrażenia analityczne na zależność poziomu fermiego od temperatury w zależności od zastosowanego przybliżenia zostały podane poniżej. Aby je otrzymać należy przyrównać równanie \ref{eq: electron concentration} do odpowiedniego przybliżenia i rozwiązać ze względu na $E_F$. Zauważmy, że we wszystkich przypadkach występuje składnik stały oraz wyraz liniowo zależny od temperatury. Dziwić może fakt, iż dla obszaru nasycenia poziom Fermiego obniża się mimo stałości koncentracji. Można to "dziwne" zjawisko rozumiec na dwa sposoby: 
+            \begin{enumerate}
+                \item Ponieważ koncentracja elektronów w paśmie przewodnictwa jest stała to musi istnieć czynnik kompensujący zmianę temperatury aby równanie \ref{eq: electron concentration} pozostawało prawdziwe.
+                \item Przypomnijmy sobie, że poziom Fermiego w fizyce statystycznej oznacza \textbf{potencjał chemiczny elektronów}. Potencjał chemiczny informuje nas o tym ile energii musimy włożyć aby do zadanego układu dołożyć jedną cząstkę. 
+                Więc jeśli naszym układem jest pasmo przewodnictwa to możemy o tym myśleć jako o energii, którą elektron musi dodatkowo uzyskać którą elektron musi dodatkowo uzyskać poza nabytą energią kinetyczną (inaczej temperaturą). Tłumaczy to naturalnie obserwowaną liniową zależność poziomu Fermiego od temperatury.
+            \end{enumerate}
+            \begin{center}
+                \begin{minipage}[b]{0.32\textwidth}
+                    \small
+                    \begin{equation*}
+                        E_F(T) = E_C - \frac{E_C - E_D}{2} + \frac{kT}{2}\ln\left(\frac{N_D}{N_C}\right)
+                    \end{equation*}
+                    \centering
+                    Obszar wymrażania nośników
+                \end{minipage}
+                \hfill
+                \begin{minipage}[b]{0.32\textwidth}
+                    \small
+                    \begin{equation*}
+                        E_F(T) = E_C - kT\ln\left(\frac{N_C}{N_D}\right)
+                    \end{equation*}
+                    \centering
+                    Obszar nasycenia
+                \end{minipage}
+                \hfill
+                \begin{minipage}[b]{0.32\textwidth}
+                    \small
+                    \begin{equation*}
+                        E_F(T) = E_C - \frac{E_G}{2} + \frac{kT}{2}\ln\left(\frac{N_C}{N_D}\right)
+                    \end{equation*}
+                    \centering
+                    Obszar samoistny
+                \end{minipage}
+            \end{center}
+
+        \subsubsection{Półprzewodnik domieszkowany - podwójna domieszka}
+            \textcolor{orange}{TODO: Tata, Napisać}
+        \subsubsection{Inne zależności}            
+            \textcolor{orange}{TODO: Tata, Napisać}
+            % zmiana ruchliwości w funkcji temperatury (jakaś referencja do literatury gdzie są wyznaczane T^{3/2}, T^{-3/2} jako rozpraszanie na defektach i  fononach
+            % podanie przykładu i opisanie innych mechanizmów rozpraszania)
+
+\section{Stany nierównowagowe}
+    Do tej pory zajmowaliśmy się jedynie półprzewodnikiem w stanie stacjonarnym, jedyne co zmienialiśmy to najwyżej temperatura, nie liczymy poziomu domieszkowania ponieważ jest to parameter struktury. Aby móc opisać półprzewodnik, a potem urządzenie, którę będzie czymś więcej niż ciekawostką na półce musimy nauczyć się opisywać stany nierównowagowe. 
+    \subsection{Kwazi-poziomy Fermiego}
+        \noindent \textcolor{orange}{TODO: Ładniej przepisać ten fragment, na razie nie mam lepszego pomysłu}
+        \newline \newline
+        Poziom Fermiego pozwala obliczyć wiele przydatnych wielkości i dostarcza cennych informacji o stanie półprzewodnika. Byłoby wielką stratą, gdybyśmy musieli porzucić cały dorobek poprzednich sekcji i musieli wszystko zaczynać od początku.  
+        Jak na początku wspomnieliśmy, o poziomie Fermiego możemy mówić jedynie w stanie równowagi. Jeżeli rozważymy małe zaburzenia to będziemy mogli wprowadzić pojęcie równowagi lokalnej,nośniki w ramach jednego pasma pozostają w równowadze termicznej względem siebie, mimo że cały układ może być poza równowagą. Jeżeli możemy mówić o lokalnej równowadzie, to możemy mówić o \textbf{kwazipoziomach Fermiego}, wtedy koncentracja elektronów w paśmie przewodnictwa będzie opisana równaniem \ref{eq: electron concentration vs quasi fermi level} a dziur \ref{eq: hole concentration vs quasi fermi level}. Jeżeli wymnożymy teraz obydwa te równania przez siebie to okazuje się, że prawo działania mas przestaje obowiązywać.
+        \begin{tcolorbox}[colback=black!15!white, colframe=gray!25!black, title=Koncentracja od kwazipoziomów Fermiego]
+            \begin{minipage}[t]{0.49\textwidth}
+                \begin{equation}
+                    n = N_C e^{-\frac{E_C - E_F^n}{kT}} \label{eq: electron concentration vs quasi fermi level}
+                \end{equation}
+            \end{minipage}
+            \hfill
+            \begin{minipage}[t]{0.49\textwidth}
+                \begin{equation}
+                    p = N_V e^{-\frac{E_F^p - E_V}{kT}} \label{eq: hole concentration vs quasi fermi level}
+                \end{equation}
+            \end{minipage}
+        \end{tcolorbox}
+    \subsection{Generacja i Rekombinacja}
+        Procesy generacji i rekombinacji odgrywają kluczową rolę w działaniu urządzeń półprzewodnikowych z kilku powodów. Po pierwsze generacja jest odpowiedzialna za działanie 
+        fotowoltaiki, jej działanie opiera się na generacji międzypasmowej (pasmo–pasmo). Rekombinacja (\textcolor{red}{zweryfikować prawdziwość tego twierdzenia}) jest szczególnie istotna, ponieważ zachodzi samoczynnie, bez potrzeby działania czynnika zewnętrznego, względem generacji, aby zachodziła. W przeważającej większości przypadków rekombinacja przez głębokie defekty jest pasożytnicza i ogranicza wydajność. 
+        \subsubsection{Możliwe mechanizmy}
+            Przykładowe mechanizmy:
+            \begin{center}
+                \begin{minipage}[t]{0.49\textwidth}
+                    \centering
+                    Generacji
+                    \begin{enumerate}
+                        \item \textbf{Generacja optyczna pasmo-pasmo}
+                        \item Jonizację zderzeniową
+                        \item Tunelowanie
+                    \end{enumerate}
+                \end{minipage}
+                \hfill
+                \begin{minipage}[t]{0.49\textwidth}
+                    \centering
+                    Rekombinacji
+                    \begin{enumerate}
+                        \item \textbf{Rekombinacja przez głębokie defekty}
+                        \item Rekombinacja promienista
+                        \item Rekombinacja Augera
+                    \end{enumerate}
+                \end{minipage}
+            \end{center}
+            Do przeanalizowania jak obydwa wyszczególnione mechanizmy wpływają na statystyki nośników wykorzystamy najprostszy przypadek. Rozpatrzmy przypadek półprzewodnika samoistnego oświetlonego zewnętrznym źródłem światła. Równanie opisujące zmianę koncentracji nośników w czasie przyjmuje postać: \ref{eq: kinetic eq simple iluminated case}, gdzie $g_{opt}$ to generacja optyczna, $g_0/r_0$ to odpowiednio generacja/rekombinacja równowagowa (taka która występuje zawsze w niezerowej temperaturze).
+            \begin{equation}
+                \frac{dn}{dt} = g - r = g_{opt} + g_0 - r\label{eq: kinetic eq simple iluminated case}
+            \end{equation}
+            W warunkach równowagi $g_0 = r_0 = \gamma n_0p_0$, natomiast w trakcie lub po zaburzeniu rekombinacja będzie proporcjonalna do iloczynu koncentracji. $r = \gamma np$ a generacja równowagowa nadal będzie opisywana tym samym równaniem. Niesymetryczność tych dwóch procesów bierze się z faktu, iż do rekombinacji potrzeba dwóch nośników a do generacji tylko jednego. W stanie nie równowagowym koncentrację nośników można opisać równianiem $n = n_0 + \Delta n$. Wstawiamy teraz odpowiednie wielkości do równania kinetycznego.
+            \begin{equation}
+                \frac{dn}{dt} = g_{opt} + \gamma n_0p_0 - \gamma (n_0 + \Delta n)(p_0 + \Delta p) \nonumber
+            \end{equation}
+            Następnie zauważymy, że $\Delta n = \Delta p$\footnote{w ogólności nie jest to prawda, ponieważ zakładamy półprzewodnik bez domieszek lub naładaowanych defektów z których można by generować nośniki} i wymnożymy nawiasy, wtedy otrzymamy
+            \begin{equation}
+                \frac{dn}{dt} = g_{opt} - \gamma (n_0 + p_0)\Delta n \left | \tau = \frac{1}{\gamma(n_0 + p_0)} \right| \Rightarrow \frac{dn}{dt} = g_{opt} - \tau\Delta n \label{eq: carrier-lifetime-eq}
+            \end{equation}
+            \begin{wrapfigure}{l}{0.5\textwidth}
+                \centering
+                % \includegraphics[options]{name}
+                \fbox{\parbox[c][100pt][c]{0.48\textwidth}{\centering Obrazek w przygotowaniu}}
+                \caption{Koncentracja elektronów przed, w trakcie i po wyłącznie oświetlenia dla półprzewodnika samoistnego}
+            \end{wrapfigure}
+
+            
+            \noindent Wielkość $\tau$ nazywamy czasem życia nadmiarowych nośników (ang. carrier lifetime), i nie należy jej mylić z czasem między rozpraszaniami (czasem relaksacji). Równanie różniczkowe można rozwiązać metodą uzmiennienia stałej, a przy założeniu(nie świeciliśmy na półprzewodnik przez co koncentracja była równa koncentracji równowagowej) że $n(t=0) = n_0$ to finalne rozwiązanie będzie miało postać \ref{eq: solution of carrier-lifetime-eq}. Po wyłączeniu oświetlenia można przeprowadzić podobną analizę (pamiętając, że nie ma wtedy czynnika $g_{opt}$) a finalny wynik ma postać \ref{eq: solution of carrier-lifetime-eq-turnoff-light}. 
+            \newline\newline\newline
+            \begin{minipage}[t]{0.49\textwidth}
+                \begin{equation}
+                    n(t) = g_{opt}\left(1 - e^{-\frac{t}{\tau}}\right) \label{eq: solution of carrier-lifetime-eq}
+                \end{equation}
+            \end{minipage}
+            \hfill
+            \begin{minipage}[t]{0.49\textwidth}
+                \begin{equation}
+                    n(t) = g_{opt}\tau e^{-\frac{t}{\tau}} \label{eq: solution of carrier-lifetime-eq-turnoff-light}
+                \end{equation}
+            \end{minipage}
+
+
+
+        \subsubsection{Rekombinacja SRH} \label{sec: SRH}
+        
+            \paragraph{Szybkości emisji i wychwytu}
+
+    \subsection{Półprzewodnik pod oświetleniem} \label{sec: iluminated semiconductor}
+        % kinetyka nośników po włączeniu oświetlenia oraz po jego wyłączeniu
+        %potencjalnie możne to przeżucić do półprzewodnika pod oświetleniem
+
+\section{Mechanizmy transportu}
+    Aby zacząć budować urządzenia półprzewodnikowe musimy jeszcze poruszyć temat transportu nośników. Bez transportu półprzewodniki zasadniczo byłyby tylko kawałkiem materiału i nie można by z nich było zrobić użytecznych urządzeń.
+    W tym rozdziale omówimy dwa najprostsze mechanizmy transportu: dryfu (unoszenia) oraz dyfuzji, a dalszych częściach wykładu poznamy ich więcej.
+    \subsection{Prąd unoszenia/dryftowy}
+        \textcolor{orange}{todo: potencjalnie przepisać, nie wiem czy jest to wystarcająco jasne }
+
+        \noindent Prąd unoszenia, zwany również dryftowym, jest oznaczany najczęściej jako $I^u$. Jego występowanie wynika z faktu iż elektrony pod wpływem pola elektrycznego przemieszcają się, inaczej mówiąc prąd unoszenia jest spowodowany przyłożeniem pola elektrycznego i jest opisywany równaniem \ref{eq: Drift current} w przypadku elektronów. $\sigma_n$ jest przewodnością i wyraża się wzorem $\sigma_n = qn\mu$. $\mu$ to ruchliwość, wyrażana wzorem \ref{eq: mobility}. Jest to parametr proporcjonalności między przyłożonym polem elektrycznym a prędkością dryfu. Aby dojść do równania \ref{eq: mobility} należy przyrównać siłę jaka działa na elektron ($F_C = qE$) do jego równania ruchu, następnie rozwiązać je ze względu na prędkość (oznaczana jako $v_d$). Parametr $\tau$ to średni czas między dwoma aktami rozproszenia elektronu (nie mylić zczasem życia nośników, który związany jest z rekombinacją). Równanie \ref{eq: Drift current} jest prawdziwe w przypadku kiedy pola elektryczne nie są za duże, w praktyce prędkość dryfu nie powinna być porównywalna z prędkością termiczną. 
+        \newline
+        \begin{minipage}[l]{0.49\textwidth}
+            \centering
+            \begin{equation}
+                I^u_n = \sigma_n E \label{eq: Drift current}
+            \end{equation}
+        \end{minipage}
+        \hfill
+        \begin{minipage}[r]{0.49\textwidth}
+            \centering
+            \begin{equation}
+                \mu = \frac{v_d}{E} = \frac{e \tau}{m^*}\label{eq: mobility}
+            \end{equation}
+        \end{minipage}
+        
+    \subsection{Prąd dyfuzyjny}
+        Prąd dyfuzyjny wiążemy z faktem istnienia różnic w  nośników. Prąd dyfuzyjny można porównać do rozpylenia perfum w pomieszczeniu. Naturalnym dla nas jest, że chwilę po rozpyleniu perfum w jednym rogu pomieszczenia zaraz
+        poczujemy ich zapach po drugiej stronie, formalnego punktu widzenia ma to związek z maksymalizacją entropii konfiguracyjnej. W ogólności prąd dyfuzyjny elektronów możemy opisać równaniem \ref{eq: diffiusion current}. Znak minus jest po to aby kierunek prądu dyfuzyjnego odpowiadał kierunkowi rzeczywistego przepływu ładunku; przyjęto znak minus tak, aby prąd dziur i elektronów sumowały się. D jest współczynnikiem dyfuzji i pełni rolę czynnika skalującego różnicę koncentracji. 
+        \begin{equation}
+            I_n^d = qD\frac{dn}{dx} \label{eq: diffiusion current}
+        \end{equation}
+        Zarówno prąd unoszenia jak i prądu dyfuzyjny składają się dwa prądy elektronowe i dziurowe a całkowity prąd płynący przez półprzewodnik jest sumą prądów unoszenia i dyfuzji. 
+        \begin{equation}
+            I = \textcolor{blue}{I_n} +\textcolor{red}{I_p} =\textcolor{blue}{I_n^u} +\textcolor{blue}{I_n^d} +\textcolor{red}{I_p^u} + \textcolor{red}{I_p^d}
+        \end{equation}
+    
+    \subsection{Relacja Einsteina}
+        Zastanówmy się przez chwilę czy możemy połączyć w jakiś sposób połączyć ze sobą na pozór dwa niezwiązane ze sobą wyżej omówione mechanizmy transportu. Za prądem unoszenia stoi oddziaływanie elektronami z polem elektrycznym a za dyfuzją gradient koncetracji. Prąd unoszenia jest opisywany przez charakterystyczną wielkość \textbf{ruchliwość} a prąd dyfuzyjny przez \textbf{współczynnik dyfuzji}. Tym co obydwa mechnizmy mają wspólne są mechanizmy rozpraszania które powodują ograniczenie ruchu nośników. Jest ona ważna z conajmniej dwóch powodów: pozwala na późniejsze zunifikowanie opisu prądu płynącego przez urządzenie (równanie diody) oraz wiąże teoretyczny parameter jakim jest współczynnik dyfuzji z mierzalną i interpretowalną wartością, ruchliwością. Pokażemy sobie jak na dwa sposoby można dojść do relacji Einsteina, pierwszy będzie prosty i praktyczny, drugi — bardziej fizycznie ugruntowany. 
+
+        \subsubsection{Sposób I - praktyczny}
+            Nasze wyprowadzenie zacznymy od zauważenia faktu, że w stanie równowagi żaden wypadkowy prąd przez półprzewodnik płynąć nie może. Ponieważ dziury traktujemy niezależnie oraz jako pełnoprawne nośniki to rozumowania przeprowadzone dla elektronów będzie w pełni prawdziwe także i dla dziur. Zależnośc tą możemy zapisać następującym równaniem $I_n = I_n^u + I_n^d = 0$, co po podstawieniu równań \ref{eq: Drift current} i \ref{eq: diffiusion current}, przeniesieniu prądu dyfuzji na drugą stronę oraz skróceniu ładunku elementarnego można zapisać równaniem \ref{eq: Einstein relation, basic eq}.
+            \begin{equation}
+                n\mu E = - D\frac{dn}{dx} \label{eq: Einstein relation, basic eq}
+            \end{equation}
+            Zastanawiającym może być fakt pojawinia się pola elektrycznego w stanie równowagi. Nie jest to do końca całkiem takie normalne pole elektryczne i potencjał z nim związany, jego źródłem jest próbka sama w sobie. powstaje ono na skutek prądu dyfuzyjnego płynącego w próbce. Inaczej mówiąc Na skutek nieustannej generacji i rekombinacji, ruchy termiczne naturalnie wytwarzają gradienty koncentracji, co zaburza rozkład potencjału i prowadzi do powstania pola elektrycznego i powstanie pola elektrycznego które przeciwdziała tym lokalnym zmianom koncentracji tak aby wypadkowy prąd był zawsze i cały czas 0. 
+            \newline \newline
+            \noindent Konctracja elektronów jest opisana równaniem \ref{eq: n in Einstain relation} co po podstawieniu do równania \ref{eq: Einstein relation, basic eq} i policzeniu pochodnej można zapisać w postaci \ref{eq: Einstain relation before simplification}. Na komentarz zasługję przejście z równania \ref{eq: Einstein relation, basic eq} do \ref{eq: Einstain relation before simplification}. Została tutaj policzona pochodna funkcji złożonej oraz wykładnika funkcji exp. Ponieważ mamy doczynienia ze stanem równowagi to poziom Fermiego jest płaski jak i pasma, a jedynym czynnikiem zależnym od x jest potencjał $\varphi$, nie znamy jego postaci ale wiemy ile wynosi jego pochodna, E.  
+            \newline
+            \begin{minipage}[l]{0.49\textwidth}
+                \begin{equation}
+                    n = N_C e^{-\frac{E_f - E_C + q\varphi }{kT}} \label{eq: n in Einstain relation}
+                \end{equation}
+            \end{minipage}
+            \begin{minipage}[l]{0.49\textwidth}
+                \begin{equation}
+                    n\mu E = \frac{qDn}{kT} \frac{d \varphi }{dx} \label{eq: Einstain relation before simplification}
+                \end{equation}
+            \end{minipage}
+            Upraszczając równianie \ref{eq: Einstain relation before simplification} dojdziemy do finalnej postaci relacji Einstaina \ref{eq: Einstain Relation}. 
+            \begin{equation}
+                D = \frac{\mu kT}{q} \label{eq: Einstain Relation}
+            \end{equation}
+        \subsubsection{Sposób II - fizyczny}
+            \textcolor{orange}{todo: tata dopisać fizyczny sposób dojścia do relacji Einsteina}
+    
+    \subsection{Półprzewodnik w zewnętrznym potencjale}
+        W poprzednim punkcie naszych rozwarzań przemknęliśmy się nad jedną kwestią nie wchodząc w szczegóły. wpływ pola elektrycznego na pasma energetyczne co się przełoży na koncentrację. Podejdźmy do problemu od strony koncentracji. Zawzse\footnote{w przypadku półprzewodników niezdegenerowanych} prawdziwa jest zależność \ref{eq: electron concentration vs quasi fermi level}, ponieważ pasma energetycznem mają sens energii potencjalnej to jeżeli przyłożymy do półprzewodnika stałe zewnętrzne pole elektryczne to pasma się wygną w sposób jednostajny \ref{fig: semiconductor in external voltage}. 
+        \begin{figure}[H]
+            \centering
+            % \includegraphics[options]{name}
+            \fbox{\parbox[c][100pt][c]{0.5\textwidth}{\centering Obrazek w przygotowaniu}}
+            \caption{Półprzewodnik w zewnętrznym potencjale}
+            \label{fig: semiconductor in external voltage}
+        \end{figure}
+        \noindent Zapiszmy równianie na prąd i wykorzystajmy uprzednio wyprowadzoną relację Einstaina do uproszczenia wyników. 
+        \begin{align*}
+            I_n &= \sigma E + qD\frac{dn}{dx} = qn\mu E + qD\frac{d}{dx}\left(N_Ce^{- \frac{E_C - E_F^n}{kT} }\right) \\
+            &= qn\mu E - q \frac{\mu kT}{q}\left(\frac{d E_C}{dx} -\frac{d E_F^n}{dx} \right) \frac{1}{kT}N_Ce^{- \frac{E_C - E_F^n}{kT} } \\
+            &= qn\mu E - \mu n \left(\frac{d E_C}{dx} -\frac{d E_F^n}{dx} \right) =  \left|\frac{d E_C}{dx} = qE \right| \\
+            &- qn \mu E - qn \mu E + n\mu \frac{d E_F^n}{dx}
+        \end{align*}                
+        \begin{tcolorbox}[colback=black!15!white, colframe=gray!25!black, title=Prąd a kwazipoziom Fermiego]
+            \begin{equation}
+                I_n = n\mu\nabla E_F^n \label{eq: current as qasi fermi level gradient}
+            \end{equation}
+        \end{tcolorbox}
+        \noindent Równanie \ref{eq: current as qasi fermi level gradient} jest jednym z najważniejszych równań w fizyce przyrządów półprzewodnikowych. 
+        \newline \newline
+    \noindent \textcolor{orange}{todo: tata dopisać jeszcze kawałek o tym że równica w kwazipoziomach fermiego to jest przyłożone napięcie}
