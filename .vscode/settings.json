@@ -1,6 +1,5 @@
 {
     "window.newWindowProfile": "Python",
-
     "files.exclude": {
         "**/*.aux": true,
         "**/*.log": true,
@@ -11,12 +10,12 @@
         "**/__pycache__/": true,
         "**/main.fdb_latexmk": true
     },
-
     "github.copilot.enable": {
         "*": false,
         "plaintext": false,
         "markdown": false,
-        "scminput": false
+        "scminput": false,
+        "python": true
     },
     "todo-tree.tree.showBadges": false
 }
