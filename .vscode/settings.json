@@ -15,7 +15,29 @@
         "plaintext": false,
         "markdown": false,
         "scminput": false,
-        "python": true
+        "python": false
     },
-    "todo-tree.tree.showBadges": false
+    "todo-tree.tree.showBadges": false,
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportMissingImports": "none",
+        "reportMissingModuleSource": "none"
+    },
+    "python.formatting.blackArgs": [
+        "--line-length",
+        "100"
+    ],
+    "python.formatting.provider": "black",
+    "python.analysis.autoImportCompletions": true,
+    "python.linting.formattingProvider": "black",
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnSaveMode": "modifications",
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": "explicit",
+        "source.fixAll": "explicit"
+    },
+    "cSpell.words": [
+        "numberline"
+    ],
 }

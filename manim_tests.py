@@ -51,7 +51,7 @@ def run_manim_physics_example() -> None:
 
 def run_manim_slides_example() -> None:
 
-    class BasicExample(Slide):
+    class BasicExample(Slide): #ignore E0238
         def construct(self):
             circle = Circle(radius=3, color=BLUE)
             dot = Dot()
@@ -67,11 +67,10 @@ def run_manim_slides_example() -> None:
 
 
     with tempconfig({"preview": True, "disable_caching": True}):
-        scene = BasicExample()
+
         os.system("manim-slides manim_tests.py BasicExample")
         os.system(f"manim-slides present BasicExample")
 
-    # ...existing code...
 
 
 def main() -> None:
