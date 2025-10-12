@@ -1,0 +1,81 @@
+{
+  "slides": [
+    {
+      "loop": false,
+      "auto_next": false,
+      "playback_rate": 1.0,
+      "reversed_playback_rate": 1.0,
+      "notes": "",
+      "dedent_notes": true,
+      "skip_animations": false,
+      "src": null,
+      "file": "slides\\files\\AntSpiralExample\\7154d829f2a97a8fab2c1abaa16c103bc47e33ab43f7e8054e52d2a934edf0a1.mp4",
+      "rev_file": "slides\\files\\AntSpiralExample\\7154d829f2a97a8fab2c1abaa16c103bc47e33ab43f7e8054e52d2a934edf0a1_reversed.mp4"
+    },
+    {
+      "loop": false,
+      "auto_next": false,
+      "playback_rate": 1.0,
+      "reversed_playback_rate": 1.0,
+      "notes": "",
+      "dedent_notes": true,
+      "skip_animations": false,
+      "src": null,
+      "file": "slides\\files\\AntSpiralExample\\aafd6732765e5e73b46961a36af922e6bfff04d15e3eaea625eab186e81e054a.mp4",
+      "rev_file": "slides\\files\\AntSpiralExample\\aafd6732765e5e73b46961a36af922e6bfff04d15e3eaea625eab186e81e054a_reversed.mp4"
+    },
+    {
+      "loop": false,
+      "auto_next": false,
+      "playback_rate": 1.0,
+      "reversed_playback_rate": 1.0,
+      "notes": "",
+      "dedent_notes": true,
+      "skip_animations": false,
+      "src": null,
+      "file": "slides\\files\\AntSpiralExample\\4f15f0c861995ba94990553cf6bab89ca8e9d60952a3e184a881f0aed3d4c797.mp4",
+      "rev_file": "slides\\files\\AntSpiralExample\\4f15f0c861995ba94990553cf6bab89ca8e9d60952a3e184a881f0aed3d4c797_reversed.mp4"
+    },
+    {
+      "loop": false,
+      "auto_next": false,
+      "playback_rate": 1.0,
+      "reversed_playback_rate": 1.0,
+      "notes": "",
+      "dedent_notes": true,
+      "skip_animations": false,
+      "src": null,
+      "file": "slides\\files\\AntSpiralExample\\f2155afc8dbfd54699cfb5877b384a2e00d259c379e69c796547bc783806f5b4.mp4",
+      "rev_file": "slides\\files\\AntSpiralExample\\f2155afc8dbfd54699cfb5877b384a2e00d259c379e69c796547bc783806f5b4_reversed.mp4"
+    },
+    {
+      "loop": false,
+      "auto_next": false,
+      "playback_rate": 1.0,
+      "reversed_playback_rate": 1.0,
+      "notes": "",
+      "dedent_notes": true,
+      "skip_animations": false,
+      "src": null,
+      "file": "slides\\files\\AntSpiralExample\\a34f483d7f8969cd87e540bc59e84187bd8ac9dcf6610a15a2520f6d1d2e5d96.mp4",
+      "rev_file": "slides\\files\\AntSpiralExample\\a34f483d7f8969cd87e540bc59e84187bd8ac9dcf6610a15a2520f6d1d2e5d96_reversed.mp4"
+    },
+    {
+      "loop": false,
+      "auto_next": false,
+      "playback_rate": 1.0,
+      "reversed_playback_rate": 1.0,
+      "notes": "",
+      "dedent_notes": true,
+      "skip_animations": false,
+      "src": null,
+      "file": "slides\\files\\AntSpiralExample\\103561ccd5db57109f69b9fb339b07694179694a3cfd08c8237748fb1ffd9743.mp4",
+      "rev_file": "slides\\files\\AntSpiralExample\\103561ccd5db57109f69b9fb339b07694179694a3cfd08c8237748fb1ffd9743_reversed.mp4"
+    }
+  ],
+  "resolution": [
+    1280,
+    720
+  ],
+  "background_color": "black"
+}
