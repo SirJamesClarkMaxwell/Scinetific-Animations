@@ -312,8 +312,8 @@ class FullAnimation(ZoomedScene, Slide):
             ]
         )
 
-        radial_arrows = VGroup(*[Arrow(color=ant.get_color()) for ant in ants])
-        transversal_arrows = VGroup(*[Arrow(color=ant.get_color()) for ant in ants])
+        radial_arrows = VGroup(*[Arrow(color=ant.get_color(),tip_kwargs={"tip_shape": StealthTip}) for ant in ants])
+        transversal_arrows = VGroup(*[Arrow(color=ant.get_color(),tip_kwargs={"tip_shape": StealthTip}) for ant in ants])
 
         self.play(
             LaggedStart(
@@ -488,6 +488,7 @@ class FullAnimation(ZoomedScene, Slide):
                 color=ant.get_color(),
                 buff=0,
                 max_stroke_width_to_length_ratio=1e2,
+                tip_kwargs={"tip_shape": StealthTip}
             )
             mob.become(it)
 
@@ -516,6 +517,7 @@ class FullAnimation(ZoomedScene, Slide):
                 color=ant.get_color(),
                 buff=0,
                 max_stroke_width_to_length_ratio=1e2,
+                tip_kwargs={"tip_shape": StealthTip}
             )
             mob.become(it)
 

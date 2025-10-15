@@ -139,12 +139,12 @@ class Animation1(Slide):
         velocity_functions: List[Callable] = [
             lambda time: FACTOR,
             lambda time: 2 * FACTOR * time,
-            lambda time: np.cos(time * (PI / 2)),
+            lambda time: PI/2*np.cos(time * (PI / 2)),
         ]
         acceleration_functions: List[Callable] = [
             lambda time: 0,
             lambda time: 2 * FACTOR,
-            lambda time: -np.sin(time * (PI / 2)),
+            lambda time: -(PI/2)**2 * np.sin(time * (PI / 2)),
         ]
 
         for ball, func in zip(balls, position_functions):
@@ -165,7 +165,7 @@ class Animation1(Slide):
             x_range=x_range, y_range=[0, 2.2, 0.3], **axis_config
         )
         acceleration_axes = NumberPlane(
-            x_range=x_range, y_range=[-1.5, 2.5, 0.4], **axis_config
+            x_range=x_range, y_range=[-2.5, 2.5, 0.5], **axis_config
         )
         axes = (
             VGroup(position_axes, velocity_axes, acceleration_axes)
@@ -628,6 +628,8 @@ class Animation3(Slide):
         self.next_slide()  # ready to start position step
 
         t.set_value(0)
+        self.play(t.animate.set_value(PI/4), run_time=2, rate_func=linear)
+        self.next_slide()  # discuss after full revolution
         self.play(t.animate.set_value(TREV), run_time=6, rate_func=linear)
         self.next_slide()  # discuss after full revolution
 
@@ -641,7 +643,7 @@ class Animation3(Slide):
         self.next_slide()  # start velocities
 
         # quarter stops: 0 -> π/2 -> π -> 3π/2 -> 2π
-        for target in [PI / 2, PI, 3 * PI / 2, TREV]:
+        for target in [PI/4,PI / 2, PI, 3 * PI / 2, TREV]:
             self.play(t.animate.set_value(target), run_time=1.8, rate_func=linear)
             self.next_slide()  # pause at each quarter
 
@@ -651,6 +653,8 @@ class Animation3(Slide):
             FadeIn(VGroup(a_vec, ax_vec, ay_vec, acc_curves, acc_marks), shift=UP),
         )
         t.set_value(0)
+        self.next_slide()  # start accelerations
+        self.play(t.animate.set_value(PI/4), run_time=2, rate_func=linear)
         self.next_slide()  # start accelerations
         self.play(t.animate.set_value(TREV), run_time=6, rate_func=linear)
         self.next_slide()  # end of acceleration step
