@@ -8,7 +8,9 @@
         "**/*.toc": true,
         "**/*.synctex.gz": true,
         "**/__pycache__/": true,
-        "**/main.fdb_latexmk": true
+        "**/main.fdb_latexmk": true,
+        ".vscode/": true,
+        ".venv/": true
     },
     "github.copilot.enable": {
         "*": false,
