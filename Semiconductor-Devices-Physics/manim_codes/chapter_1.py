@@ -1,3 +1,4 @@
+from concurrent.futures import ThreadPoolExecutor
 from typing import Callable, List, Tuple, Optional, Dict
 
 from matplotlib import axes
@@ -16,7 +17,7 @@ from scipy.optimize import fsolve
 k_B = 8.617333262145e-5
 
 ## Fermi-Dirac Distribution
-T_MIN, T_MAX, T_STEP = 0.0, 3000.0, 500.0
+T_MIN, T_MAX, T_STEP = 0.0, 5500.0, 500.0
 GRADIENT_STOPS: List[Tuple[float, ManimColor]] = [
     (0.0, BLUE),
     (0.5, YELLOW),
@@ -139,7 +140,7 @@ class FermiDiracDistribution(Scene):
             self.play(
                 temperature.animate.set_value(int(T)), run_time=1.5, rate_func=linear
             )
-
+            self.wait()
         self.wait(0.5)
 
 
@@ -455,13 +456,13 @@ class ConcentrationDependency(ZoomedScene):
         self.play(self.get_zoomed_display_pop_out_animation())
         self.play(self.T.animate.set_value(1600), run_time=2)
         self.wait()
-        # self.play(self.Nd.animate.set_value(1e18), run_time=2)
-        # self.play(self.Eg.animate.set_value(2), run_time=2)
-        # self.wait()
-        # self.play(self.Ed.animate.set_value(1.9), run_time=2)
-        # self.wait()
-        # self.play(self.T.animate.set_value(1500), self.zoom(0.1), run_time=2)
-        # self.wait()
+        self.play(self.Nd.animate.set_value(1e18), run_time=2)
+        self.play(self.Eg.animate.set_value(2), run_time=2)
+        self.wait()
+        self.play(self.Ed.animate.set_value(1.9), run_time=2)
+        self.wait()
+        self.play(self.T.animate.set_value(1500), self.zoom(0.1), run_time=2)
+        self.wait()
 
     def fermi_dirac(self, E: float, mu: float) -> float:
         # Stable evaluation (avoid overflow at very low T)
@@ -617,13 +618,13 @@ class FermiLevelDependence(Scene):
         self.wait()
         self.play(self.Eg.animate.set_value(2),self.Ed.animate.set_value(1.8), run_time=3)
 
-        # self.wait(3)
-        # self.Na.set_value(1e14)
-        # self.play(self.Na.animate.set_value(1e16), run_time=5)
-        # self.wait(3)
-        # self.play(self.Ed.animate.set_value(1.8), run_time=5)
-        # # self.wait(3)
-        # self.play(self.Nd.animate.set_value(18), run_time=5)
+        self.wait(3)
+        self.Na.set_value(1e14)
+        self.play(self.Na.animate.set_value(1e16), run_time=5)
+        self.wait(3)
+        self.play(self.Ed.animate.set_value(1.8), run_time=5)
+        self.wait()
+        self.play(self.Nd.animate.set_value(18), run_time=5)
         self.wait()
 
     def generate_slider(self):
@@ -701,7 +702,7 @@ class FermiLevelDependence(Scene):
             .add_coordinates()
             .to_corner(UL, SMALL_BUFF * 3)
         )
-        main_axes += main_axes.get_axis_labels("T [K]", "E [eV]", font_size=25)
+        main_axes += main_axes.get_axis_labels(Text("T [K]",font_size=25), Text("E [eV]",font_size=25))#, font_size=25)
 
         invT_min = 1000.0 / T_MAX
         invT_max = 1000.0 / max(T_MIN, 1.0)
@@ -758,7 +759,7 @@ class FermiLevelDependence(Scene):
             .to_edge(RIGHT, LARGE_BUFF)
         )
         semiconductor_axes += semiconductor_axes.get_axis_labels(
-            "x", "E [eV]", font_size=25
+            Text("x", font_size=25), Text("E [eV]", font_size=25)
         )
 
         return main_axes, arrhenius_axes, semiconductor_axes
@@ -844,5 +845,3 @@ class FermiLevelDependence(Scene):
         return float(fsolve(neutrality, x0=Ef0, xtol=1e-12, maxfev=200)[0])
 
 
-# with tempconfig({"quality": "low_quality", "preview": True}):
-#     FermiLevelDependence().render()
